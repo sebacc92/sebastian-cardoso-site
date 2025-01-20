@@ -45,6 +45,7 @@ export default function Contact() {
             transition={{ duration: 0.5 }}
             onSubmit={handleSubmit}
             className="space-y-6"
+            data-netlify="true"
           >
             <motion.div
               initial={{ x: -50, opacity: 0 }}

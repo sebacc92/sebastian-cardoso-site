@@ -1,9 +1,11 @@
 import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { translations } from '../data/translations';
+import { useTheme } from '../context/ThemeContext';
 import { motion } from 'framer-motion';
 
 export default function Hero() {
+  const { theme } = useTheme();
   const { language } = useLanguage();
   const t = translations[language];
 
@@ -14,13 +16,21 @@ export default function Hero() {
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           transition={{ duration: 0.5 }}
-          className="relative w-32 h-32 mx-auto mb-8 rounded-full overflow-hidden hover:scale-105 transition-transform duration-300"
+          className="relative w-40 h-40 mx-auto mb-8 rounded-full overflow-hidden hover:scale-105 transition-transform duration-300"
         >
-          <img
-            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?fit=crop&w=300&h=300"
-            alt="Profile"
-            className="w-full h-full object-cover"
-          />
+          {theme === "dark"
+            ? <img
+              src="/profile-pic-dark.png"
+              alt="Profile"
+              className="w-full h-full object-cover"
+            />
+            : <img
+              src="/profile-pic-light.png"
+              alt="Profile"
+              className="w-full h-full object-cover"
+            />
+          }
+          
         </motion.div>
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
